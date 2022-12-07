@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--Facilites_view-->
+        <record id="action_view_facilities" model="ir.ui.view">
+        <field name="name">Facilities</field>
+        <field name="model">facilities</field>
+        <field name="arch" type="xml">
+                <tree>
+                    <field name ="facilities"/>
+                </tree>
+        </field>
+    </record>
+
+
+
+
+
+<!--Facilities-->
+        <record id="facilities_action" model="ir.actions.act_window">
+                <field name="name">Facilities</field>
+                <field name="res_model">facilities</field>
+                <field name="view_mode">tree,form</field>
+        </record>
+
+<!--Menu Facilities-->
+        <menuitem id="Travel_Management_Menu_Facilities"
+              parent="Travel_Management_Menu"
+              name="Facilities"
+              action="facilities_action"
+              sequence="5"/>
+
+
+</odoo>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_travel_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h1>
+                        <centre>Travel Management Report</centre>
+                    </h1>
+
+                <t t-if="date_from">
+                    <p>
+                        <b>Date from :</b>
+                        <span t-esc="date_from"/>
+                    </p>
+                </t>
+                <t t-if="date_to">
+                    <p>
+                        <b>Date to :</b>
+                        <span t-esc="date_to"/>
+                    </p>
+                </t>
+                <t t-if="customer_id">
+                    <p>
+                        <b>Customer :</b>
+                        <span t-esc="customer_id"/>
+                    </p>
+                </t>
+
+
+                </div>
+                <style>
+                    table, th, td {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                    }
+                </style>
+                <table style="width:100%;">
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Source Location</th>
+                        <th>Destination_location</th>
+                        <th>Vehicle Name</th>
+                        <th>State</th>
+                    </tr>
+
+                    <t t-set="i" t-value="1"/>
+                    <t t-foreach="data_pdf" t-as="data">
+                        <tr>
+                            <td>
+                                <t t-esc="i"/>
+                            </td>
+                            <td>
+                                <t t-esc="data['location']"/>
+                            </td>
+                            <td>
+                                <t t-esc="data['loc2']"/>
+                            </td>
+                            <td>
+                                <t t-esc="data['vehicle_type']"/>
+                            </td>
+                            <td>
+                                <t t-esc="data['state']"/>
+                            </td>
+                        </tr>
+
+                        <t t-set="i" t-value="i+1"/>
+
+
+                    </t>
+
+
+
+
+
+                </table>
+
+            </t>
+
+
+        </t>
+
+
+    </template>
+
+
+</odoo>

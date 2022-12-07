@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Service_type_view-->
+        <record id="action_view9" model="ir.ui.view">
+        <field name="name">Service Type</field>
+        <field name="model">service.types</field>
+        <field name="arch" type="xml">
+                <tree>
+                    <field name ="name"/>
+                    <field name ="expiration_period"/>
+                </tree>
+        </field>
+    </record>
+
+<!--    for-->
+        <record id="action_view9" model="ir.ui.view">
+        <field name="name">Service Type</field>
+        <field name="model">service.types</field>
+        <field name="arch" type="xml">
+                <form>
+                    <group>
+                    <field name ="name"/>
+                    <field name ="expiration_period"/>
+                    </group>
+                </form>
+        </field>
+    </record>
+
+    <record id="action_view9" model="service.types">
+        <field name="name">Travel Package</field>
+        <field name ="expiration_period">30</field>
+
+
+        </record>
+
+
+<!--    model-->
+            <record id="service_type_action" model="ir.actions.act_window">
+                <field name="name">Service types</field>
+                <field name="res_model">service.types</field>
+                <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+<!--    menu of service-->
+    <menuitem id="Travel_Management_Menu_Configuration"
+              parent="Travel_Management_Menu"
+              name="Configuration"
+              sequence="10"/>
+    <menuitem id ="Travel_Management_Menu_Configuration_Service_type"
+              parent="Travel_Management_Menu_Configuration"
+              name="Service Type"
+              action="service_type_action"  />
+
+
+
+
+</odoo>

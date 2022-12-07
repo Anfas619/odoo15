@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--Tour Package tree-->
+    <record id="action_view_tour_package_tree" model="ir.ui.view">
+        <field name="name">tour package</field>
+        <field name="model">tour.package</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="customer_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="facilities_ids"/>
+                <field name="vehicle_list"/>
+
+            </tree>
+        </field>
+    </record>
+    <!--    calendar-->
+    <record id="view_production_calendar" model="ir.ui.view">
+        <field name="name">vehicle_package_calendar</field>
+        <field name="model">tour.package</field>
+        <field eval="2" name="priority"/>
+        <field name="arch" type="xml">
+            <calendar date_start="start_date" date_stop="end_date" color="vehicle_list"
+                      string="Calendar View" quick_add="False">
+                <field name="vehicle_list"/>
+
+            </calendar>
+        </field>
+    </record>
+
+    <!--    form view-->
+    <record id="action_view_tour_package_form" model="ir.ui.view">
+        <field name="name">tour package</field>
+        <field name="model">tour.package</field>
+        <field name="arch" type="xml">
+            <form string="form">
+                <header>
+                    <button name="action_confirm_booking" type="object" string="Confirm"/>
+                </header>
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="customer_id"/>
+                            <field name="source_location_id"/>
+                            <field name="destination_location_id"/>
+                            <field name="vehicle_type"/>
+                            <field name="vehicle_list"/>
+
+
+                        </group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="no_of_travellers"/>
+                            <field name="facilities_ids" options="{'no_quick_create': True, 'no_create_edit' : True}"
+                                   widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Estimation">
+                            <field name='tour_ids'>
+                                <tree editable="bottom">
+                                    <field name="service"/>
+                                    <field name="quantity"/>
+                                    <field name="amount"/>
+                                    <field name="subtotal" force_save="1"/>
+                                </tree>
+
+
+
+                            </field>
+                            <group class="oe_subtotal_footer oe_right">
+                                <field name="total"/>
+                            </group>
+
+
+                        </page>
+<!--                        <page string="Estimation amount">-->
+<!--                            <field name='estimation_amount_ids'>-->
+<!--                                <tree editable="bottom">-->
+<!--                                    <field name="service"/>-->
+<!--                                    <field name="quantity"/>-->
+<!--                                    <field name="amount"/>-->
+<!--                                    <field name="subtotal" force_save="1"/>-->
+<!--                                </tree>-->
+<!--                            </field>-->
+
+<!--                        </page>-->
+                    </notebook>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+
+    <!--Tour package-->
+    <record id="tour_package_action" model="ir.actions.act_window">
+        <field name="name">Tour Package</field>
+        <field name="res_model">tour.package</field>
+        <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+    <!--Menu Tour package-->
+    <menuitem id="Travel_Management_Menu_Tour_Package"
+              parent="Travel_Management_Menu"
+              name="Tour Package"
+              action="tour_package_action"
+              sequence="6"/>
+
+
+</odoo>

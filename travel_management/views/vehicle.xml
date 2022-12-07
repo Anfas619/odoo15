@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--    view form of vehicles-->
+
+
+    <!--    Tree view-->
+
+    <record id="action_view_vehicle_tree" model="ir.ui.view">
+        <field name="name">vehicle</field>
+        <field name="model">vehicle</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="registration_no"/>
+                <field name="vehicle_type"/>
+                <field name="name"/>
+                <field name="no_of_seats"/>
+                <!--                <field name ="service"/>-->
+                <!--                <field name ="quantity"/>-->
+                <!--                <field name ="unit"/>-->
+                <!--                <field name ="amount"/>-->
+
+
+            </tree>
+        </field>
+    </record>
+    <record id="action_view_vehicle_form" model="ir.ui.view">
+        <field name="name">Vehicle Form</field>
+        <field name="model">vehicle</field>
+        <field name="arch" type="xml">
+            <form string="test">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="registration_no"/>
+                            <field name="name"/>
+                            <field name="no_of_seats"/>
+                            <field name="start_date"/>
+
+
+                        </group>
+                        <group>
+
+                            <field name="vehicle_type"/>
+                            <field name="facilities_ids" widget="many2many_tags"/>
+                            <field name="end_date"/>
+
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Vehicle Charges">
+                            <field name='service_ids'>
+                                <tree>
+
+                                    <field name='service'/>
+                                    <field name='quantity'/>
+                                    <field name='unit'/>
+                                    <field name='amount'/>
+
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name='service'/>
+                                        <field name='quantity'/>
+                                        <field name='unit'/>
+                                        <field name='amount'/>
+
+                                    </group>
+
+                                </form>
+                            </field>
+
+                        </page>
+                    </notebook>
+
+
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <!--    vehicle View-->
+    <record id="vehicle_action" model="ir.actions.act_window">
+        <field name="name">vehicle form</field>
+        <field name="res_model">vehicle</field>
+        <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+    <!--calender view-->
+    <record id="mobile_service_view_calendar" model="ir.ui.view">
+        <field name="name">vehicle_calendar</field>
+        <field name="model">vehicle</field>
+        <field name="arch" type="xml">
+            <calendar string="Vehicle_calendar" date_start="start_date" date_stop="end_date"
+                      color="registration_no" quick_add="False">
+                <field name="registration_no"/>
+
+            </calendar>
+        </field>
+    </record>
+
+    <!--    Vehilce Menu-->
+    <menuitem id="Travel_Management_Menu_Vehicle"
+              parent="Travel_Management_Menu"
+              name="Vehicles"
+              sequence="4"
+              action="vehicle_action"/>
+
+
+</odoo>
+
+
+
+

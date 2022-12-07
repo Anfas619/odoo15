@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template id="template" xml:space="preserve">
+    <t t-name="ProductItem" t-inherit="point_of_sale.ProductItem" t-inherit-mode="extension" owl="1">
+        <xpath expr=".//div[hasclass('product-name')]" position="inside">
+            <t t-if='props.product.product_spanish'>
+                <div class="pos-receipt-left-padding">
+                    <t t-esc='props.product.product_spanish' />
+                </div>
+            </t>
+        </xpath>
+    </t>
+</template>
+
+
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<templates id="template" xml:space="preserve" inherit_id="point_of_sale_template">-->
+<!--    <t t-inherit="point_of_sale.Orderline" t-inherit-mode="extension">-->
+<!--        <xpath expr="//li[hasclass('info')]" position="after"><br/><span>-->
+<!--            <t t-if='props.product.product_spanish'>-->
+<!--                <div class="pos-receipt-left-padding">-->
+<!--                    <t t-esc='props.product.product_spanish' />-->
+<!--                </div>-->
+<!--            </t>-->
+<!--        </span>-->
+<!--        </xpath>-->
+<!--    </t>-->
+<!--</templates>-->
+
+
+
+
+
+

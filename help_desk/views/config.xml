@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--<tree view of Helpdesk-->
+    <record id="tree_view_help_desk_team" model="ir.ui.view">
+        <field name="name">tree_view_help_desk</field>
+        <field name="model">config.desk</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="help_name"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+
+<!--tree view of tags-->
+        <record id="tree_view_help_desk_tags" model="ir.ui.view">
+        <field name="name">tree_view_help_desk</field>
+        <field name="model">tag.desk</field>
+        <field name="arch" type="xml">
+            <tree editable = "bottom">
+                <field name="tag_name"/>
+                <field name="color" widget="color_picker"/>
+
+            </tree>
+        </field>
+    </record>
+
+<!--<deskteam menu-->
+    <record id="help_desk_team_action" model="ir.actions.act_window">
+        <field name="name">HelpdeskTeam</field>
+        <field name="res_model">config.desk</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+<!--    menu of tag-->
+    <record id="help_desk_tag_action" model="ir.actions.act_window">
+        <field name="name">Tags</field>
+        <field name="res_model">tag.desk</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem id="Help_Desk_Menu_Configuration"
+              parent="Help_Desk_Menu"
+              name="Configuration"/>
+    <menuitem id ="Help_Desk_Menu_Configuration_Help_Desk_Team"
+              parent="Help_Desk_Menu_Configuration"
+              name="Helpdesk Teams"
+              action="help_desk_team_action"  />
+    <menuitem id ="Help_Desk_Menu_Configuration_Tags"
+              parent="Help_Desk_Menu_Configuration"
+              name = "Tags"
+              action="help_desk_tag_action"/>
+
+
+
+
+
+</odoo>

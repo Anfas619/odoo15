@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    security-->
+    <record model="ir.module.category" id="travel_management">
+        <field name="name">Travel management</field>
+        <field name="description">User access level for travel management module</field>
+    </record>
+
+    <!--    user-->
+    <record id="travel_management_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="travel_management"/>
+    </record>
+
+    <!--manager-->
+    <record id="travel_management_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="travel_management"/>
+    </record>
+</odoo>

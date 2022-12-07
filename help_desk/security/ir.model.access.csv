@@ -1,0 +1,4 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_help_desk,help.desk,model_help_desk,base.group_user,1,1,1,1
+access_config_desk,config.desk,model_config_desk,base.group_user,1,1,1,1
+access_tag_desk,tag.desk,model_tag_desk,base.group_user,1,1,1,1

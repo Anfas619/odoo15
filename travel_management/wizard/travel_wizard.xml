@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+	<record id="travel_wizard_view_form" model="ir.ui.view">
+		<field name="name">Travel Wizard Form</field>
+		<field name="model">travel.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Test">
+				<group class="oe_title">
+					<field name="date_from" />
+					<field name="date_to"/>
+					<field name="customer_id"/>
+				</group>
+
+				<footer>
+					<button name="action_done" string="PDF" type="object" class="oe_highlight"/>
+					<button name ="excel_done" string="XLSX" type="object" class="oe_highlight"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+
+
+    <record id="travel_wizard_action" model="ir.actions.act_window">
+        	<field name="name">Travel Report Wizard</field>
+        	<field name="type">ir.actions.act_window</field>
+        	<field name="res_model">travel.wizard</field>
+        	<field name="view_mode">form</field>
+        	<field name="view_id" ref="travel_wizard_view_form"/>
+        	<field name="target">new</field>
+    	</record>
+
+
+
+    <menuitem id ="Travel_Management_Menu_Report"
+              parent="Travel_Management_Menu"
+              name="Reporting"/>
+    <menuitem id = "Travel_Management_Menu_Report_Submenu"
+              parent="Travel_Management_Menu_Report"
+              name="Travels Management Report"
+              action="travel_wizard_action"
+			  sequence="7"/>
+</odoo>
+
+

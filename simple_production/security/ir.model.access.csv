@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_bill_material,bill.material,model_bill_material,base.group_user,1,1,1,1
+access_manufacture_order,manufacture.order,model_manufacture_order,base.group_user,1,1,1,1
+access_component_value,component.value,model_component_value,base.group_user,1,1,1,1
+access_consume_order,consume.order,model_consume_order,base.group_user,1,1,1,1

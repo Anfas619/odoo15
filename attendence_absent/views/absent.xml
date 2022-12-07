@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--search filter-->
+    <record id="view_delivery_carrier_search" model="ir.ui.view">
+        <field name="name">absent_search</field>
+        <field name="model">absent.list</field>
+        <field name="arch" type="xml">
+            <search>
+                <separator/>
+                <group string="Group By">
+                    <filter name="Date" context="{'group_by':'date:day'}"/>
+                </group>
+
+            </search>
+        </field>
+    </record>
+
+    <record id="action_tree_view" model="ir.ui.view">
+        <field name="name">absent_tree</field>
+        <field name="model">absent.list</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!--    action-->
+    <record id="demo_cron" model="ir.cron">
+        <field name="name">Demo Cron Job</field>
+        <field name="model_id" ref="model_absent_list"/>
+        <field name="state">code</field>
+        <field name="code">model.cron_action()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name='interval_number'>1</field>
+        <field name='interval_type'>days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+    </record>
+
+
+    <record id="absent_action" model="ir.actions.act_window">
+        <field name="name">Absentees</field>
+        <field name="res_model">absent.list</field>
+        <field name="view_mode">tree</field>
+
+
+    </record>
+
+
+    <menuitem id="Absent_Menu" name="Absent"/>
+
+
+    <menuitem id="Absent_Menu_Absent"
+              parent="hr_attendance.menu_hr_attendance_root"
+              name="Absentees"
+              action="absent_action"
+              sequence="11"/>
+
+
+</odoo>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_delivery_carrier_search" model="ir.ui.view">
+        <field name="name">search</field>
+        <field name="model">help.desk</field>
+        <field name="arch" type="xml">
+            <search>
+                    <filter string="My Tickets" name="My_tickets" domain="[('user_id', '=', uid)]"/>
+                <separator/>
+
+            </search>
+        </field>
+    </record>
+<!--<tree view-->
+    <record id="tree_view_tickets" model="ir.ui.view">
+        <field name="name">tree_view_help_desk</field>
+        <field name="model">help.desk</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="subject_name"/>
+                <field name="help_id"/>
+                <field name="user_id"/>
+<!--                <field name="tag_ids" widget="many2many_tags"/>-->
+
+
+            </tree>
+        </field>
+    </record>
+
+        <record id="action_view_help_desk_form" model="ir.ui.view">
+        <field name="name">HelpDesk Form</field>
+        <field name="model">help.desk</field>
+        <field name="arch" type="xml">
+            <form string="test">
+                <header>
+                        <field name="state" widget="statusbar"/>
+                        <button name="action_to_work" type="object" string="Start"
+                        attrs="{'invisible': [('state','!=','new')]}"/>
+                        <button name="action_to_done" type="object" string="Done"
+                        attrs="{'invisible': [('state','!=','inprogress')]}"/>
+                        <button name="action_to_cancel" type="object" string="Cancel"
+                        attrs="{'invisible': [('state','=','cancelled')]}"/>
+                </header>
+                <sheet>
+
+                    <div class="oe_title">
+                        <h1><field name="subject_name" class="field_name" placeholder="Subject..."/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="help_id"/>
+                            <field name="user_id"/>
+                            <field name="set_priority" widget="priority"/>
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                            <field name="company_id"/>
+
+                        </group>
+                        <group>
+                            <field name = "customer_id" attrs="{'invisible': [('customer_name', '!=', False)]}"/>
+                            <field name = "customer_name" attrs="{'invisible': [('customer_id', '!=', False)]}"/>
+                            <field name = "email"/>
+                            <field name = "phone"/>
+
+                        </group>
+                    </group>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+       <record id="help_action" model="ir.actions.act_window">
+        <field name="name">Tickets</field>
+        <field name="res_model">help.desk</field>
+        <field name="view_mode">tree,form</field>
+           <field name="context">{'search_default_My_tickets': 1}</field>
+
+
+       </record>
+    <record id="all_action" model="ir.actions.act_window">
+        <field name="name">Tickets</field>
+        <field name="res_model">help.desk</field>
+        <field name="view_mode">tree,form</field>
+       </record>
+
+
+    <menuitem id="Help_Desk_Menu" name="HelpDesk"
+              action="help_action"/>
+
+    <menuitem id="Help_Desk_Menu_Ticket"
+              parent="Help_Desk_Menu"
+              name="Tickets"/>
+    <menuitem id ="Help_Desk_Menu_Ticket_MyTickets"
+              parent="Help_Desk_Menu_Ticket"
+              name="My Tickets"
+              action="help_action"/>
+    <menuitem id ="Help_Desk_Menu_Ticket_All_Tickets"
+              parent="Help_Desk_Menu_Ticket"
+              name="All Tickets"
+              action="all_action"/>
+
+
+
+
+
+</odoo>

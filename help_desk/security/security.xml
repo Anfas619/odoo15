@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    security-->
+    <record model="ir.module.category" id="help_desk">
+        <field name="name">Help Desk</field>
+        <field name="description">User access level for travel management module</field>
+    </record>
+
+    <!--    user-->
+    <record id="help_desk_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="help_desk"/>
+    </record>
+
+    <!--manager-->
+    <record id="help_desk_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="help_desk"/>
+    </record>
+</odoo>
