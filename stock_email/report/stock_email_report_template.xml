@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_stock_report">
+        <t t-call="web.html_container">
+                <div class="page">
+                    <h2>
+                        <centre><u>Stock Report</u></centre>
+                    </h2>
+                    <div>
+                        <p>
+                            <b>Report Date :</b>
+                            <span t-esc="date"/>
+                        </p>
+                    </div>
+                </div>
+                <style>
+                    table, th, td {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                    }
+                </style>
+                <table style="width:100%;">
+                    <tr>
+                        <th>Sl.No</th>
+                        <th>Date</th>
+                        <th>Product</th>
+                        <th>OnHandQuantity</th>
+                        <th>Company</th>
+                        <th>Location</th>
+
+                    </tr>
+                    <t t-foreach="data_pdf" t-as="data">
+
+
+                        <tr>
+                            <td>
+                                <t t-esc="data['id']"/>
+                            </td>
+                            <td>
+                                <t t-esc="date"/>
+
+                            </td>
+                            <td>
+                                <t t-esc="data['name']"/>
+                            </td>
+                            <td>
+                                <t t-esc="data['quantity']"/>
+                            </td>
+                            <td>
+                                <t t-esc="data['t3']"/>
+                            </td>
+                            <td>
+                                <t t-esc="data['t2']"/>
+                            </td>
+                            <td>
+
+                            </td>
+
+                        </tr>
+                    </t>
+                </table>
+
+            </t>
+    </template>
+</odoo>
